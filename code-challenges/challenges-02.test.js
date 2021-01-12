@@ -43,8 +43,11 @@ appendFirstToLast(a);
 console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
+// ['Yes', 'it', 'is', 'Yes']
 const appendFirstToLast = (arr) => {
   // Solution code here...
+  const indexZero = arr[0];
+  arr.push(indexZero);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,7 +133,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+xdescribe('Testing challenge 3', () => {
   test('It should append by modifying the oiginal', () => {
     const a = ['Yes', 'it', 'is'];
     appendFirstToLast(a);
@@ -139,7 +142,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should add a property to an object', () => {
     const a = { fullName: 'Octavia Butler' };
     addBirthYearProperty(a, 1947);
