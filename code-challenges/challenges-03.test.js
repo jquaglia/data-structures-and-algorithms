@@ -249,6 +249,17 @@ const meetings = [
 
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
+  const orderDay = {Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5};
+  const sortedArray = arr.sort((left, right) => {
+    if (orderDay[right.dayOfWeek] < orderDay[left.dayOfWeek]){
+      return 1;
+    } else if (orderDay[left.dayOfWeek] < orderDay[right.dayOfWeek]){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return sortedArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -263,6 +274,29 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  const orderDay = {Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5};
+  const sortedArray = arr.sort((left, right) => {
+    if (orderDay[right.dayOfWeek] < orderDay[left.dayOfWeek]){
+      return 1;
+    } else if (orderDay[left.dayOfWeek] < orderDay[right.dayOfWeek]){
+      return -1;
+    } else {
+      if (left.start > right.start){
+        return 1;
+      } else if (right.start > left.start){
+        return -1;
+      } else {
+        if (left.end > right.end){
+          return 1;
+        } else if (right.end > left.end){
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    }
+  });
+  return sortedArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -398,7 +432,7 @@ describe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0, 2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
@@ -408,7 +442,7 @@ xdescribe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
