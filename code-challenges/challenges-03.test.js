@@ -96,6 +96,16 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
+  const sortedArray = arr.sort((left, right) => {
+    if (left.toLowerCase() > right.toLowerCase()){
+      return 1;
+    } else if (right.toLowerCase() > left.toLowerCase()){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return sortedArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,6 +123,16 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  const sortedArray = arr.sort((first, second) => {
+    if (second.price < first.price){
+      return 1;
+    } else if (first.price < second.price){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return sortedArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,9 +142,19 @@ Write a function named sortNumbersByLength that takes in an array of numbers and
 
 For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
-
+// [1, 10, 2.8, -47.75]
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  const sortedArray = arr.sort((first, second) => {
+    if (second.toString().length < first.toString().length){
+      return 1;
+    } else if (first.toString().length < second.toString().length){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return sortedArray;
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -270,7 +300,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual(['alert', 'Alice', 'apple', 'Average']);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
@@ -279,7 +309,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should sort items by their price', () => {
     expect(sortByPrice([
       { name: 'Sweatshirt', price: 45 },
@@ -295,7 +325,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should sort numbers by their length', () => {
     expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
     expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
