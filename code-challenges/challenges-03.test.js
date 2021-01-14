@@ -314,6 +314,7 @@ $ = createSnippetWithJQuery(`
 
 const addPearClass = () => {
   // Solution code here...
+  $('li:nth-child(3)').addClass('pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -455,7 +456,7 @@ describe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should add a class of pear to the thrid li', () => {
     addPearClass();
     expect($('li:nth-child(3)').hasClass('pear')).toBe(true);
