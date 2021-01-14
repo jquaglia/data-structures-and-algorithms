@@ -54,6 +54,16 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
   // Solution code here...
+  const sortedArray = arr.sort((left, right) => {
+    if (left > right){
+      return 1;
+    } else if (right > left){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return sortedArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -231,7 +241,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should sort strings alphabetically', () => {
     expect(alphabetize(['alphabet', 'Zebra', 'Alphabet', 'carrot'])).toStrictEqual(['Alphabet', 'Zebra', 'alphabet', 'carrot']);
     expect(alphabetize(['alphabet', 'Alphabet', 'carrot'])).toStrictEqual(['Alphabet', 'alphabet', 'carrot']);
