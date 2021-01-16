@@ -197,6 +197,14 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  for (let i = 0; i < arr.length; i++){
+    while(arr[i] % 2 === 0){
+      arr.splice(i, 1);
+    }
+  }
+  return arr;
+  // console.log(arr);
+  // return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -216,6 +224,7 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  
 };
 
 
@@ -316,7 +325,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should remove the even numbers from the array', () => {
     let list = [1, 2, 3, 4, 5, 6];
     removeEvenValues(list);
