@@ -151,6 +151,21 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  const ingredients = recipe.ingredients;
+  ingredients.forEach(ingredient => {
+    const split = ingredient.split(' ');
+    const slice = split.slice(2, split.length);
+    // console.log(x);
+    // console.log(split);
+    // console.log('this is slice', slice);
+    if (slice.length === 3) {
+      result.push(`${slice[0]} ${slice[1]} ${slice[2]}`);
+    } else if (slice.length === 2){
+      result.push(`${slice[0]} ${slice[1]}`);
+    } else {
+      result.push(slice[0]);
+    }
+  });
   return result;
 };
 
@@ -291,7 +306,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
