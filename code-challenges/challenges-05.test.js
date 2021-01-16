@@ -133,8 +133,9 @@ const listFoods = (recipe) => {
   // Solution code here...
   const ingredients = recipe.ingredients;
   ingredients.forEach(ingredient => {
-    const x = ingredient.indexOf(' ', 4);
-    const listItem = ingredient.slice(x + 1, ingredient.length);
+    const indexOne = ingredient.indexOf(' ');
+    const indexTwo = ingredient.indexOf(' ', indexOne + 1);
+    const listItem = ingredient.slice(indexTwo + 1, ingredient.length);
     result.push(listItem);
   });
   return result;
@@ -155,16 +156,7 @@ const splitFoods = (recipe) => {
   ingredients.forEach(ingredient => {
     const split = ingredient.split(' ');
     const slice = split.slice(2, split.length);
-    // console.log(x);
-    // console.log(split);
-    // console.log('this is slice', slice);
-    if (slice.length === 3) {
-      result.push(`${slice[0]} ${slice[1]} ${slice[2]}`);
-    } else if (slice.length === 2){
-      result.push(`${slice[0]} ${slice[1]}`);
-    } else {
-      result.push(slice[0]);
-    }
+    result.push(slice.join(' '));
   });
   return result;
 };
