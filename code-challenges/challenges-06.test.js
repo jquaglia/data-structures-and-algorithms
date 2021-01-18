@@ -73,10 +73,9 @@ let $ = createSnippetWithJQuery(`
 const templatingWithMustache = () => {
   // Solution code here...
   const arr = [];
-  characters.forEach( character =>{
+  characters.forEach(character => {
     const htmlString = $('#template').html();
-    const object = character;
-    const renderedHtml = Mustache.render(htmlString, object);
+    const renderedHtml = Mustache.render(htmlString, character);
     arr.push(renderedHtml);
   });
   return arr;
@@ -89,7 +88,8 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
@@ -129,7 +129,19 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-
+  // Object.values(arr[character].children).forEach(childrenEntries => {
+  //   console.log('TESTING', childrenEntries);
+  // });
+  // console.log(Object.values(arr[character]));
+  let result = null;
+  arr.forEach(potato => {
+    if(Object.values(potato)[0] === character && Object.values(potato)[2].length !== 0){
+      result = true;
+    } else if (Object.values(potato)[0] === character && Object.values(potato)[2].length === 0){
+      result = false;
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -226,7 +238,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
   });
@@ -266,6 +278,6 @@ xdescribe('Testing challenge 8', () => {
 });
 
 
-function createSnippetWithJQuery(html){
+function createSnippetWithJQuery(html) {
   return cheerio.load(html);
 }
