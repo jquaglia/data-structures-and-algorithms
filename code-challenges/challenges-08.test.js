@@ -80,10 +80,7 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
-  const array = arr.filter(value => {
-    const bad = !forbiddenValues.includes(value);
-    return bad;
-  });
+  const array = arr.filter(value => !forbiddenValues.includes(value));
   return array;
 };
 
@@ -128,6 +125,16 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  console.log('BASE', arr.baseStat);
+  console.log('ARRAY', arr);
+  const array = arr.filter(value => {
+    if (minBaseStat < value){
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
