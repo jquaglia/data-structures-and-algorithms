@@ -80,6 +80,11 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  const array = arr.filter(value => {
+    const bad = !forbiddenValues.includes(value);
+    return bad;
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -261,7 +266,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   const firstNums = [1, 2, 3];
   const secondNums = [1, 2, 3, 4];
 
