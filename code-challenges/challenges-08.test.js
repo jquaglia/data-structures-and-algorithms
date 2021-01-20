@@ -36,7 +36,14 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
-  arr.filter
+  const odds = arr.filter(value => {
+    if (value % 2 === 0){
+      return false;
+    } else {
+      return true;
+    }
+  });
+  return odds;
 };
 
 /* ------------------------------------------------------------------------------------------------
