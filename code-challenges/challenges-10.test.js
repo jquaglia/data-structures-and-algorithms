@@ -62,7 +62,6 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 const totalSum = (input) => {
   // Solution code here...
   const reduce = input.reduce((acc, value) => acc.concat(value), []);
-  console.log(reduce);
   const sum = reduce.reduce((acc, value) => (acc + value), 0);
   return sum;
 };
@@ -81,6 +80,19 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  const bang = true;
+  const bing = false;
+  const output = input.map(array => {
+    const filter = array.filter(value => {
+      if (typeof value !== 'string' && value % 5 === 0) {
+        return bang;
+      } else {
+        return bing;
+      }
+    });
+    return filter.map(number => Math.pow(2, number));
+  });
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -147,6 +159,18 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  // const names = data.reduce((acc, value, index) => {
+  //   console.log(acc);
+  //   if (value.gender === 'male') {
+  //     console.log(value.name);
+  //     return acc + `${value.name} and `;
+  //   } else if (value.gender === 'female') {
+  //     return acc + `${value.name}`;
+  //   } else {
+  //     return;
+  //   }
+  // }, '');
+  // return names;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -229,7 +253,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
     expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]])).toStrictEqual([[1024, 1048576, 32], [32], [1024]]);
   });
