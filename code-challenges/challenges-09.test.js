@@ -170,8 +170,7 @@ function getCurrentEvents(request, response) {
 
 const mapCurrentEvents = () => {
   // Solution code here...
-  const eventArray = currentEvents.news.map(object => new Event(object));
-  return eventArray;
+  return currentEvents.news.map(object => new Event(object));
 };
 
 function Event(obj) {
@@ -194,10 +193,7 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
-  const arrayLength = arr.reduce(accumulator => {
-    return accumulator + 1;
-  }, 0);
-  return arrayLength;
+  return arr.reduce(accumulator => accumulator + 1, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -259,8 +255,7 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
-  const nameArray = arr.reduce((accumulator, value) => accumulator.concat(value.name), []);
-  return nameArray;
+  return arr.reduce((accumulator, value) => accumulator.concat(value.name), []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -273,9 +268,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
-  const split = str.split('');
-  const reverse = split.reduce((accumulator, value) => value + accumulator, '');
-  return reverse;
+  return str.split('').reduce((accumulator, value) => value + accumulator, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -329,6 +322,13 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, value) => {
+    if (value.children !== undefined){
+      return acc + value.children.length;
+    } else {
+      return acc;
+    }
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -341,6 +341,7 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, value) => acc + value) / arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -483,13 +484,13 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85])).toStrictEqual(64);
   });
