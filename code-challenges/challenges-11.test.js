@@ -50,9 +50,12 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 const validateEmail = (email) => {
   // Solution code here...
   // https://stackoverflow.com/questions/30585653/how-to-write-a-regex-to-match-com-or-org-with-a-in-the-domain-name/30585683
-  //
-  // const regex = /^(\w)|(\w+\.\w)+@\w+\.+(com|org|net)$/;
-  const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+  // got help on this from chance. Also was almost all the way there on my own though.
+  // const regex = /^\w+(\w)+.|\w+@\w+\.+(com|org|net)$/;
+  const regex = /^\w+[\w||.]\w+@\w*.(net|com|org)$/;
+  // const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+  // /^[A-Za-z0-9]+\.?[A-Za-z0-9]+?@[A-Za-z0-9]+.(net|com|org)$/
+  // /^\w+[\w||.]\w+@\w*.[nco][eor][tmg]$/
   return regex.test(email);
 };
 
@@ -79,8 +82,9 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
-  // const regex =
-  // regex.test(phoneNumber);
+  // https://regexlib.com/REDetails.aspx?regexp_id=3052
+  const regex = /^(?!.*--)(?!.*[0-9]{11})([\+][0-9]{1,3}([ \.\-])?)?([\(]{1}[0-9]{3}[\)])?([0-9A-Z \.\-]{1,32})((x|ext|extension)?[0-9]{1,4}?)$/;
+  return regex.test(phoneNumber);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,6 +98,9 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 
 const findTagNames = elements => {
   // Solution code here...
+  const regex = /((\/)\w+)/g;
+  return elements.map(value => value.match(regex))
+    .reduce((acc, value) => acc.concat(value), []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -183,7 +190,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return the closing tags', () => {
     expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/p']);
   });
