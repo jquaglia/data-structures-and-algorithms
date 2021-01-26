@@ -11,9 +11,9 @@ E.g. [4,2,7,5,9,2] -> 9
 const maxInArray = (arr) => {
   // Solution code here...
   return arr.reduce((acc, value) => {
-    if (acc < value){
+    if (acc < value) {
       return value;
-    } else if (acc > value){
+    } else if (acc > value) {
       return acc;
     } else {
       return acc;
@@ -45,7 +45,7 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
-
+  return stores.reduce((acc, value) => acc.map((num, index) => num + value[index]));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -198,7 +198,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add the hourly totals array', () => {
     expect(grandTotal(cookieStores)).toStrictEqual([88, 153, 252, 286, 139, 161, 145, 232, 276, 207, 161, 169]);
   });
