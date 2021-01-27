@@ -60,6 +60,9 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
+  const result = [];
+  hours.forEach((hour, index) => result.push({ sales: `${data[index]} cookies`, time: hour }));
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,6 +88,14 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  const filter = arr.filter(store => store.store === 'Pet store');
+  return filter[0].items.reduce((acc, value) => {
+    if (value.name === 'Treats') {
+      return value.quantity;
+    } else {
+      return acc;
+    }
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -204,7 +215,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should create an object of data for each store', () => {
     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
       { sales: '88 cookies', time: '9 a.m.' },
@@ -225,7 +236,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
