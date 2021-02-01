@@ -73,6 +73,28 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  // for (let i = 0; i < str.length; i++){
+  //   if (str[i] % 2 === 0){
+  //     str[i].replace(str[i], '');
+  //   } else {
+  //     break;
+  //   }
+  // }
+  // str.forEach((value, index) => {
+  //   if (index % 2 === 0){
+  //     value.replace(value, '');
+  //   } else {
+  //     value.replace(value, value);
+  //   }
+  // });
+  // const filter = str.filter((value, index) => {
+  //   console.log(filter);
+  //   if (index % 2 === 0){
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // });
 };
 
 /* ------------------------------------------------------------------------------------------------
