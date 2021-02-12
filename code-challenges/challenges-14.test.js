@@ -179,28 +179,27 @@ Here is a sample board:
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
-  // console.log(board);
-  // winning indexes
-  // const flatten = board.flat();
-  // // console.log(flatten);
-  // // console.log(flatten.indexOf('X'));
-  // const getAllIndexes = (arr, value) => {
-  //   const indexes = [];
-  //   for (let i = 0; i < arr.length; i++)
-  //     if (arr[i] === value)
-  //       indexes.push(i);
-  //   return indexes;
-  // };
-  // console.log('GET', getAllIndexes(flatten, 'X'));
-  // const winner = (numOne, numTwo, numThree) => {
-  //   if (arr[0] === numOne && arr[1] === value && arr[2] === value){
-  //     return true;
-  //   }
-  // };
+  const flatten = board.flat();
 
-  // 012, 345, 678, 036, 147, 258, 048, 246
-  // helper function checks for x, o at coordinates
-  // loop with helper function checking for matches
+  const winner = (numOne, numTwo, numThree) => {
+    if (flatten[numOne] !== '' && flatten[numOne] === flatten[numTwo] && flatten[numOne] === flatten[numThree]) {
+      return true;
+    } else { return false; }
+  };
+
+  const winChecker = () => {
+    if (winner(0, 1, 2) === true) { return true; }
+    else if (winner(3, 4, 5) === true) { return true; }
+    else if (winner(6, 7, 8) === true) { return true; }
+    else if (winner(0, 3, 6) === true) { return true; }
+    else if (winner(1, 4, 7) === true) { return true; }
+    else if (winner(2, 5, 8) === true) { return true; }
+    else if (winner(0, 4, 8) === true) { return true; }
+    else if (winner(2, 4, 6) === true) { return true; }
+    else { return false; }
+  };
+
+  return winChecker();
 };
 
 /* ------------------------------------------------------------------------------------------------
